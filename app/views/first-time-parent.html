@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Are you a first-time parent?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    {% if errors and errors["first-time-parent"] %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [{ text: errors["first-time-parent"], href: "#first-time-parent" }]
+    }) }}
+    {% endif %}
+
+    <form method="post" novalidate>
+    {{ govukRadios({
+      name: "first-time-parent",
+      fieldset: {
+        legend: {
+          text: "Are you a first-time parent?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      errorMessage: errors["first-time-parent"] if errors else null,
+      value: data["first-time-parent"],
+      items: [
+        { value: "yes", text: "Yes" },
+        { value: "no", text: "No" }
+      ]
+    }) }}
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}

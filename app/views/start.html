@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Get free AI educational toys for your baby" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Get free AI educational toys for your baby</h1>
+    <p class="govuk-body">Apply for free AI educational toys to help your baby's development.</p>
+    <p class="govuk-body">You will need:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Your baby's date of birth</li>
+      <li>Your National Insurance number</li>
+      <li>Your address</li>
+    </ul>
+    <p class="govuk-body">It takes around <strong>5 minutes</strong> to complete.</p>
+    {{ govukButton({
+      text: "Start now",
+      href: "/baby-age",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+{% endblock %}

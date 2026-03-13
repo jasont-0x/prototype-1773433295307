@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check your answers before sending" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    <h1 class="govuk-heading-xl">Check your answers before sending</h1>
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: { text: "How old is your baby?" },
+        value: { text: data["baby-age"] if data["baby-age"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/baby-age",
+            text: "Change",
+            visuallyHiddenText: "how old is your baby?"
+          }]
+        }
+      },
+      {
+        key: { text: "Are you a first-time parent?" },
+        value: { text: data["first-time-parent"] if data["first-time-parent"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/first-time-parent",
+            text: "Change",
+            visuallyHiddenText: "are you a first-time parent?"
+          }]
+        }
+      },
+      {
+        key: { text: "Is your total household income less than £25,000 per year?" },
+        value: { text: data["household-income"] if data["household-income"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/household-income",
+            text: "Change",
+            visuallyHiddenText: "is your total household income less than £25,000 per year?"
+          }]
+        }
+      },
+      {
+        key: { text: "What is your full name?" },
+        value: { text: data["parent-name"] if data["parent-name"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/parent-name",
+            text: "Change",
+            visuallyHiddenText: "what is your full name?"
+          }]
+        }
+      },
+      {
+        key: { text: "What is your National Insurance number?" },
+        value: { text: data["national-insurance"] if data["national-insurance"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/national-insurance",
+            text: "Change",
+            visuallyHiddenText: "what is your national insurance number?"
+          }]
+        }
+      }
+      ]
+    }) }}
+
+    <form method="post" novalidate>
+      {{ govukButton({ text: "Confirm and send" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
